@@ -34,7 +34,7 @@ public class TestBase {
 
     @BeforeMethod
     public void NavigateToForm(){
-        chromeDriver.get("https://demoqa.com/automation-practice-form");
+        chromeDriver.get("http://automationpractice.com/index.php");
         chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     @AfterMethod
@@ -44,6 +44,6 @@ public class TestBase {
 
     public void TakeScreenshot(ITestResult result){
         File file = ((TakesScreenshot) chromeDriver).getScreenshotAs(OutputType.FILE);
-        file.renameTo(new File("C:\\Users\\karen\\IdeaProjects\\TechTrail1\\src\\test\\Results", String.format("%s.png", result.getMethod().getMethodName())));
+        file.renameTo(new File("C:\\ApplaudoStudios\\Results", String.format("%s.png", result.getMethod().getMethodName())));
     }
 }
