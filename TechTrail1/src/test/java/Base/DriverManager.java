@@ -12,7 +12,7 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class DriverManager {
     public WebDriver chromeDriver;
 
     @BeforeSuite
