@@ -3,9 +3,9 @@
 <suite name="Default Suite">
     <test thread-count="5" name="TechTrail1">
         <classes>
-            <class name="Tests.Search"/>
-            <class name="Tests.ShoppingCart"/>
-            <class name="Tests.StoreInfo"/>
+            <class name="uiTests.Tests.Search"/>
+            <class name="uiTests.Tests.ShoppingCart"/>
+            <class name="uiTests.Tests.StoreInfo"/>
         </classes>
     </test> <!-- TechTrail1 -->
 </suite> <!-- Default Suite -->

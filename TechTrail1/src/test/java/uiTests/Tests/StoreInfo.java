@@ -1,7 +1,7 @@
-package Tests;
+package uiTests.Tests;
 
-import Base.DriverManager;
-import Pages.Index;
+import uiTests.Base.DriverManager;
+import uiTests.Pages.Index;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
