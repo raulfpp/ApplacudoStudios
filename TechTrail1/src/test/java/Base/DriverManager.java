@@ -9,41 +9,36 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+import java.awt.*;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
-    public WebDriver chromeDriver;
+    private static WebDriver chromeDriver;
 
-    @BeforeSuite
-    public void DriverSetup(){
-        WebDriverManager.chromedriver().setup();
-        //Opciones
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("start-maximized");
-        options.addArguments("enable-automation");
-        options.addArguments("disable-infobars");
-        //options.addArguments("--headless");
-        chromeDriver = new ChromeDriver(options);
+    public static WebDriver getCleanDriver(){
+        if (chromeDriver == null){
+            WebDriverManager.chromedriver().setup();
+            //Opciones
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("start-maximized");
+            options.addArguments("enable-automation");
+            options.addArguments("disable-infobars");
+            //options.addArguments("--headless");
+            chromeDriver = new ChromeDriver(options);
+        }
+        chromeDriver.manage().deleteAllCookies();
+        chromeDriver.get("http://automationpractice.com/index.php");
+        return chromeDriver;
     }
 
     @AfterSuite
-    public void CloseDriver(){
-        chromeDriver.close();
+    public static void closeDriver(){
+        if (chromeDriver != null) {
+            chromeDriver.close();
+            chromeDriver = null;
+        }
     }
 
-    @BeforeMethod
-    public void NavigateToForm(){
-        chromeDriver.get("http://automationpractice.com/index.php");
-        chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-    @AfterMethod
-    public void TakeScreenshotAfterRun (ITestResult result){
-        TakeScreenshot(result);
-    }
 
-    public void TakeScreenshot(ITestResult result){
-        File file = ((TakesScreenshot) chromeDriver).getScreenshotAs(OutputType.FILE);
-        file.renameTo(new File("C:\\ApplaudoStudios\\Results", String.format("%s.png", result.getMethod().getMethodName())));
-    }
 }

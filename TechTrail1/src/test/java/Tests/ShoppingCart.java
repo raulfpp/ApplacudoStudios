@@ -1,22 +1,25 @@
 package Tests;
 
-import Base.TestBase;
+import Base.DriverManager;
 import Pages.CartPage;
 import Pages.Index;
 import Pages.ProductPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class ShoppingCart extends TestBase {
+public class ShoppingCart  {
     @Test
-    public void addToCart(){
+    public void addToCart() throws InterruptedException {
+        WebDriver chromeDriver = DriverManager.getCleanDriver();
         Index indexPage = new Index(chromeDriver);
         indexPage.openFeaturedItem(0);
 
         ProductPage productPage = new ProductPage(chromeDriver);
         String productName = productPage.getName();
+
         productPage.clickAddToCartButton();
 
         CartPage cartPage = new CartPage(chromeDriver);
@@ -28,6 +31,7 @@ public class ShoppingCart extends TestBase {
 
     @Test
     public void deleteFromCart() throws InterruptedException {
+        WebDriver chromeDriver = DriverManager.getCleanDriver();
         Index indexPage = new Index(chromeDriver);
         indexPage.openFeaturedItem(0);
 

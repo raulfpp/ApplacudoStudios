@@ -19,8 +19,9 @@ public class ProductPage {
         return name.getText();
     }
 
-    public void clickAddToCartButton(){
+    public void clickAddToCartButton() throws InterruptedException {
         addToCartButton.click();
+        Thread.sleep(1000);
         confirmButton.click();
     }
 }

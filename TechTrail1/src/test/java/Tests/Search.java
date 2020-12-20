@@ -1,14 +1,16 @@
 package Tests;
 
-import Base.TestBase;
+import Base.DriverManager;
 import Pages.Index;
 import Pages.SearchResults;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Search extends TestBase {
+public class Search {
     @Test
     public void Search_Positive(){
+        WebDriver chromeDriver = DriverManager.getCleanDriver();
         Index indexPage = new Index(chromeDriver);
         indexPage.enterSearch("Dress");
 
@@ -19,6 +21,7 @@ public class Search extends TestBase {
 
     @Test
     public void Search_Negative(){
+        WebDriver chromeDriver = DriverManager.getCleanDriver();
         Index indexPage = new Index(chromeDriver);
         indexPage.enterSearch("NoResultsPlz");
 

@@ -1,7 +1,11 @@
-<suite name = "Test-Suite1">
-    <test name = "formulario de prueba">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Default Suite">
+    <test thread-count="5" name="TechTrail1">
         <classes>
-            <class name="Base.TestBase"/>
+            <class name="Tests.Search"/>
+            <class name="Tests.ShoppingCart"/>
+            <class name="Tests.StoreInfo"/>
         </classes>
-    </test>
-</suite>
+    </test> <!-- TechTrail1 -->
+</suite> <!-- Default Suite -->
