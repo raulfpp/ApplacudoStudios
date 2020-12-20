@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.TestBase;
+import Pages.Index;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -12,16 +13,12 @@ public class StoreInfo extends TestBase {
     @Test
     public void validateStoreInfo_NoScroll(){
 
-        WebElement storeInfoBlock = chromeDriver.findElement(By.id("block_contact_infos"));
+        Index indexPage = new Index(chromeDriver);
+        Assert.assertEquals(indexPage.getAddress(),"Selenium Framework, Research Triangle Park, North Carolina, USA");
+        Assert.assertEquals(indexPage.getMail(),"support@seleniumframework.com");
+        Assert.assertEquals(indexPage.getPhone(),"(347) 466-7432");
 
-        WebElement address = storeInfoBlock.findElement(By.xpath(".//li[1]"));
-        Assert.assertEquals(address.getText(),"Selenium Framework, Research Triangle Park, North Carolina, USA");
-
-
-        WebElement email = storeInfoBlock.findElement(By.xpath("//li[3]//span//a"));
-        Assert.assertEquals(email.getText(),"support@seleniumframework.com");
-
-        WebElement phone_number = storeInfoBlock.findElement(By.xpath("//*[@id=\"block_contact_infos\"]/div/ul/li[2]/span"));
-        Assert.assertEquals(phone_number.getText(),"(347) 466-7432");
     }
+
+
 }
